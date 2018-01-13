@@ -27,7 +27,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
     compile('org.xhtmlrenderer:flying-saucer-pdf:9.0.8')
 	compile('com.itextpdf:itext-asian:5.2.0')
-	compile('com.itextpdf:itextpdf:5.4.3')
+//	compile('com.itextpdf:itextpdf:5.4.3')
 	compile 'org.apache.commons:commons-io:1.3.2'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

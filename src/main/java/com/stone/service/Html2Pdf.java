@@ -22,8 +22,8 @@ public class Html2Pdf {
         try {
             fontResolver.addFont("/Users/shidonghua/IdeaProjects/vm2pdf/src/main/resources/fonts/SimSun.ttf",
                     BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-//            fontResolver.addFont("STSong-Light",
-//                    "UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
+            // for macbookpro user
+//            fontResolver.addFont("/Users/shidonghua/Library/Fonts/SimSun.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
         } catch (DocumentException e) {
             e.printStackTrace();
@@ -49,7 +49,8 @@ public class Html2Pdf {
         ClassLoader classLoader = html2Pdf.getClass().getClassLoader();
         File htmlFile = new File(classLoader.getResource("html/htmlTest1.html").getFile());
 
-        String htmlStr = FileUtils.readFileToString(htmlFile);
+        // encoding type is must, otherwise chinese will not display properly
+        String htmlStr = FileUtils.readFileToString(htmlFile, "utf-8");
 //        byte[] content = html2Pdf.convert("<html><body>test pdf</body></html>");
         byte[] content = html2Pdf.convert(htmlStr);
 
