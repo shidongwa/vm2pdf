@@ -51,7 +51,8 @@ public class Html2Pdf {
         Html2Pdf html2Pdf = new Html2Pdf();
 
         ClassLoader classLoader = html2Pdf.getClass().getClassLoader();
-        File htmlFile = new File(classLoader.getResource("html/htmlTest1.html").getFile());
+//        File htmlFile = new File(classLoader.getResource("html/htmlTest1.html").getFile());
+        File htmlFile = new File(classLoader.getResource("html/contract1.html").getFile());
 
         // encoding type is must, otherwise chinese will not display properly
         String htmlStr = FileUtils.readFileToString(htmlFile, "utf-8");
