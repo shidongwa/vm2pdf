@@ -15,9 +15,12 @@ import java.io.*;
  */
 @Service
 public class Html2Pdf {
+    private static final String BASE_URL = "file:///Users/shidonghua/IdeaProjects/vm2pdf/src/main/resources/";
 
     public byte[] convert(String htmlStr) {
         ITextRenderer renderer = new ITextRenderer();
+        renderer.getSharedContext().setBaseURL(BASE_URL);
+//        renderer.getSharedContext().getUserAgentCallback().setBaseURL("file:///Users/shidonghua/IdeaProjects/vm2pdf/src/main/resources/");
         ITextFontResolver fontResolver = renderer.getFontResolver();
         try {
             fontResolver.addFont("/Users/shidonghua/IdeaProjects/vm2pdf/src/main/resources/fonts/SimSun.ttf",
@@ -31,7 +34,8 @@ public class Html2Pdf {
             e.printStackTrace();
         }
         ByteArrayOutputStream os = new ByteArrayOutputStream();
-        renderer.setDocumentFromString(htmlStr);
+        renderer.setDocumentFromString(htmlStr, BASE_URL);
+        System.out.println("baseurl:" + renderer.getSharedContext().getUserAgentCallback().getBaseURL());
         renderer.layout();
         try {
             renderer.createPDF(os);
